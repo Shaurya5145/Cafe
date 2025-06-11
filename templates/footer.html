@@ -1,0 +1,44 @@
+<footer class="bg-dark text-light pt-5 pb-3">
+  <div class="container-fluid px-5">
+    <div class="row gy-4">
+      
+      <!-- About / Logo -->
+      <div class="col-md-4 text-center text-md-start">
+        <h4 class="fw-bold mb-2">☕ Cafe Finder</h4>
+        <p class="small">
+          Discover and share the best cafés in town. Built with ❤ by Shaurya.
+        </p>
+      </div>
+      
+      <!-- Quick Links -->
+      <div class="col-md-4 text-center">
+        <h5 class="mb-3">Quick Links</h5>
+        <ul class="list-unstyled">
+          <li><a href="{{ url_for('home') }}" class="text-light text-decoration-none">Home</a></li>
+          <li><a href="{{ url_for('add_cafe') }}" class="text-light text-decoration-none">Add Café</a></li>
+          <li><a href="{{ url_for('search_cafe') }}" class="text-light text-decoration-none">Search</a></li>
+        </ul>
+      </div>
+      
+      <!-- Social -->
+      <div class="col-md-4 text-center text-md-end">
+        <h5 class="mb-3">Follow Me</h5>
+        <a href="https://github.com/Shaurya5145" target="_blank"
+           class="text-light fs-4 me-3 social-icon">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://x.com/shaurya13797357" target="_blank"
+           class="text-light fs-4 social-icon">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </div>
+
+    </div>
+
+    <hr class="border-secondary mt-4">
+
+    <div class="text-center small">
+      &copy; {{current_year}} sCODER. All rights reserved.
+    </div>
+  </div>
+</footer>
