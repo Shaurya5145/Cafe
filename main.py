@@ -252,9 +252,13 @@ def contact():
             connection.starttls()
             connection.login(user=MY_EMAIL, password=MY_PASS)
             connection.sendmail(
-                msg=f"Subject:Query on your Cafe Website\n\nName: {name}\nMessage:{message}",
                 from_addr=email,
-                to_addrs=MY_EMAIL)
+                to_addrs=MY_EMAIL,
+                msg=f"Subject: Query on your Cafe Website\n"
+                f"Reply-To: {email}\n"
+                f"\n"
+                f"Name: {name}\n"
+                f"Message:\n{message}")
         return redirect(url_for("home"))
     return render_template("contact_us.html", form=form)
 
