@@ -58,7 +58,7 @@ class Cafes(db.Model):
 
 
 class User(db.Model, UserMixin):
-    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    id: Mapped[int] = mapped_column(Integer, primary_key=True,autoincrement=True)
     name: Mapped[str] = mapped_column(String, nullable=False)
     email: Mapped[str] = mapped_column(String, nullable=False, unique=True)
     password: Mapped[str] = mapped_column(String, nullable=False)
