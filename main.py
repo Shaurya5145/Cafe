@@ -57,7 +57,7 @@ class Cafes(db.Model):
     description: Mapped[str] = mapped_column(String)
 
 
-class Users(db.Model, UserMixin):
+class User(db.Model, UserMixin):
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     name: Mapped[str] = mapped_column(String, nullable=False)
     email: Mapped[str] = mapped_column(String, nullable=False, unique=True)
@@ -72,7 +72,7 @@ with app.app_context():
 
 @login_manager.user_loader
 def load_user(user_id):
-    return Users.query.get_or_404(user_id)
+    return User.query.get_or_404(user_id)
 
 
 @app.context_processor
@@ -264,7 +264,7 @@ def register():
     form = SignUp()
     if form.validate_on_submit():
         user = db.session.execute(
-            db.select(Users).where(Users.email == form.email.data)
+            db.select(User).where(User.email == form.email.data)
         ).scalar()
         if not user:
             name = form.name.data
@@ -272,7 +272,7 @@ def register():
             password = generate_password_hash(
                 form.password.data, method="pbkdf2:sha256", salt_length=8
             )
-            new_user = Users(name=name, email=email, password=password)
+            new_user = User(name=name, email=email, password=password)
             db.session.add(new_user)
             db.session.commit()
             return redirect(url_for("login"))
@@ -293,7 +293,7 @@ def login():
     form = Login()
     if form.validate_on_submit():
         user = db.session.execute(
-            db.select(Users).where(Users.email == form.email.data)
+            db.select(User).where(User.email == form.email.data)
         ).scalar()
         if not user:
             flash(message="No user exists with this email.")
