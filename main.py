@@ -92,10 +92,10 @@ def search_cafe():
     form = Cafe_Search()
     if form.validate_on_submit():
         location = form.location.data.title()
-        wifi = 1 if form.wifi.data == True else 0
-        sockets = form.sockets.data if form.sockets.data == True else 0
-        toilet = form.toilet.data if form.toilet.data == True else 0
-        calling = form.calling.data if form.calling.data == True else 0
+        wifi = form.wifi.data
+        sockets = form.sockets.data
+        toilet = form.toilet.data
+        calling = form.calling.data
 
         stmt = db.select(Cafes).where(Cafes.location.ilike(f"%{location}%"))
         if wifi:
